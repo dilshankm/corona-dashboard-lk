@@ -13,7 +13,8 @@ export default class Header extends Component {
     navBarStyle = () => {
         return {
             backgroundColor: 'navy',
-            fontSize: '2rem'
+            fontSize: '2rem',
+            fontWeight: 'bold'
         }
     }
 
@@ -25,12 +26,12 @@ export default class Header extends Component {
                     <Navbar.Brand style={this.headerStyle()}>
                         <img
                             alt=""
-                            src="https://covid-dashboard-sl.s3.ap-south-1.amazonaws.com/lk.svghttps://upload.wikimedia.org/wikipedia/commons/1/11/Flag_of_Sri_Lanka.svg"
+                            src="https://covid-dashboard-sl.s3.ap-south-1.amazonaws.com/logo.svg"
                             width="50"
                             height="50"
                             className="d-inline-block align-center"
                         />{' '}
-      COVID 2019 Dashbaord
+      COVID 2019 Sri Lanka Dashbaord
     </Navbar.Brand>
                 </Navbar>
             </div>

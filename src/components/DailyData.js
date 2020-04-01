@@ -89,7 +89,7 @@ export default class DailyData extends Component {
                             color={colours[7]}
                             updated_date={this.state.daily.data.update_date_time}></Cards>
                     </React.Fragment>
-                    : <h1>Error</h1>}
+                    : null}
             </CardDeck>
         )
     }
