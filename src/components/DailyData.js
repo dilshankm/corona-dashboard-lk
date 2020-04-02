@@ -3,6 +3,7 @@ import axios from 'axios'
 import Card from 'react-bootstrap/Card'
 import CardDeck from 'react-bootstrap/CardDeck'
 import Cards from './Cards'
+import Container from 'react-bootstrap/Container'
 
 export default class DailyData extends Component {
 
@@ -63,12 +64,12 @@ export default class DailyData extends Component {
                             value={this.state.daily.data.local_total_cases}
                             color={colours[1]}
                             updated_date={this.state.daily.data.update_date_time}></Cards>
-                        < Cards type={'Local Individuals In Hospitals'}
+                        < Cards type={'Locals In Hospitals'}
                             src={icons[2]}
                             value={this.state.daily.data.local_total_number_of_individuals_in_hospitals}
                             color={colours[2]}
                             updated_date={this.state.daily.data.update_date_time}></Cards>
-                        < Cards type={'Local Deaths'}
+                        < Cards type={'Local All Deaths'}
                             src={icons[0]}
                             value={this.state.daily.data.local_deaths}
                             color={colours[3]}
