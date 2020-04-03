@@ -14,11 +14,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header></Header>
-        <br></br>
-        <React.Fragment>
-          <DailyData></DailyData>
-        </React.Fragment>
+        <Header />
+        <br />
+        <Container fluid>
+          <DailyData />
+        </Container>
       </div>
     );
   }
