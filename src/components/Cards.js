@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Card from 'react-bootstrap/Card'
+import Container from 'react-bootstrap/Container'
 
 export default class Cards extends Component {
 
@@ -35,10 +36,23 @@ export default class Cards extends Component {
         }
     }
 
+    imageStyle = () => {
+        return {
+            display: 'block',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            marginTop: '20px',
+            marginBottom: '20px',
+            width: '50%'
+        }
+    }
+
     render() {
         return (
             <Card className='text-center' bg={this.props.color} text='white'>
-                <Card.Img className='image-center' variant="top" src={this.props.src} />
+                <Container>
+                    <Card.Img style={this.imageStyle()} className='image-center' variant="top" src={this.props.src} />
+                </Container>
                 <Card.Header>
                     <Card.Title style={this.textStyle()}>{this.props.type}</Card.Title>
                 </Card.Header>
