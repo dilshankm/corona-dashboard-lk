@@ -1,16 +1,12 @@
 import React, { Component, Fragment } from 'react'
-import axios from 'axios'
-import Card from 'react-bootstrap/Card'
 import CardDeck from 'react-bootstrap/CardDeck'
 import Cards from './Cards'
-import Container from 'react-bootstrap/Container'
+import { connect } from "react-redux"
+import { getDatas } from '../selectors/selectors'
+import { getToggleStates } from '../selectors/selectors'
 
-export default class DailyData extends Component {
 
-    state = {
-        daily: []
-    }
-
+class DailyData extends Component {
 
     deckStyle = () => {
         return {
@@ -19,17 +15,7 @@ export default class DailyData extends Component {
         }
     }
 
-    componentDidMount() {
-        axios.get('https://hpb.health.gov.lk/api/get-current-statistical')
-            .then(res =>
-                this.setState({ daily: res.data })
-            )
-    }
-
     render() {
-        if (this.state.daily.message === 'Success') {
-            // const { local_active_cases } = this.state.daily.data;
-        }
         const colours = [
             'primary',
             'secondary',
@@ -51,47 +37,78 @@ export default class DailyData extends Component {
         ]
 
         return (
-            <CardDeck style={this.deckStyle()}>
-                {this.state.daily.message === 'Success' ?
-                    <React.Fragment>
+            < CardDeck style={this.deckStyle()} >
+                {this.props.state.toggle && this.props.state.fetch.message === 'Success' ?
+                    < React.Fragment >
                         < Cards type={'Local New Cases'}
                             src={icons[5]}
-                            value={this.state.daily.data.local_new_cases}
+                            value={this.props.state.fetch.data.local_new_cases}
                             color={colours[0]}
-                            updated_date={this.state.daily.data.update_date_time}></Cards>
+                            updated_date={this.props.state.fetch.data.update_date_time}></Cards>
                         < Cards type={'Local Total Cases'}
                             src={icons[4]}
-                            value={this.state.daily.data.local_total_cases}
+                            value={this.props.state.fetch.data.local_total_cases}
                             color={colours[1]}
-                            updated_date={this.state.daily.data.update_date_time}></Cards>
+                            updated_date={this.props.state.fetch.data.update_date_time}></Cards>
                         < Cards type={'Locals In Hospitals'}
                             src={icons[2]}
-                            value={this.state.daily.data.local_total_number_of_individuals_in_hospitals}
+                            value={this.props.state.fetch.data.local_total_number_of_individuals_in_hospitals}
                             color={colours[2]}
-                            updated_date={this.state.daily.data.update_date_time}></Cards>
+                            updated_date={this.props.state.fetch.data.update_date_time}></Cards>
                         < Cards type={'Local All Deaths'}
                             src={icons[0]}
-                            value={this.state.daily.data.local_deaths}
+                            value={this.props.state.fetch.data.local_deaths}
                             color={colours[3]}
-                            updated_date={this.state.daily.data.update_date_time}></Cards>
+                            updated_date={this.props.state.fetch.data.update_date_time}></Cards>
                         < Cards type={'Local New Deaths'}
                             src={icons[0]}
-                            value={this.state.daily.data.local_new_deaths}
+                            value={this.props.state.fetch.data.local_new_deaths}
                             color={colours[4]}
-                            updated_date={this.state.daily.data.update_date_time}></Cards>
+                            updated_date={this.props.state.fetch.data.update_date_time}></Cards>
                         < Cards type={'Local Recovered'}
                             src={icons[1]}
-                            value={this.state.daily.data.local_recovered}
+                            value={this.props.state.fetch.data.local_recovered}
                             color={colours[5]}
-                            updated_date={this.state.daily.data.update_date_time}></Cards>
+                            updated_date={this.props.state.fetch.data.update_date_time}></Cards>
                         < Cards type={'Local Active Cases'}
                             src={icons[3]}
-                            value={this.state.daily.data.local_active_cases}
+                            value={this.props.state.fetch.data.local_active_cases}
                             color={colours[7]}
-                            updated_date={this.state.daily.data.update_date_time}></Cards>
+                            updated_date={this.props.state.fetch.data.update_date_time}></Cards>
                     </React.Fragment>
-                    : null}
-            </CardDeck>
+                    : this.props.state.fetch.message === 'Success' && !this.props.state.toggle ?
+                        < React.Fragment >
+                            < Cards type={'Global New Cases'}
+                                src={icons[5]}
+                                value={this.props.state.fetch.data.global_new_cases}
+                                color={colours[0]}
+                                updated_date={this.props.state.fetch.data.update_date_time}></Cards>
+                            < Cards type={'Global Total Cases'}
+                                src={icons[4]}
+                                value={this.props.state.fetch.data.global_total_cases}
+                                color={colours[1]}
+                                updated_date={this.props.state.fetch.data.update_date_time}></Cards>
+                            < Cards type={'Gloabl Deaths'}
+                                src={icons[0]}
+                                value={this.props.state.fetch.data.global_new_deaths}
+                                color={colours[2]}
+                                updated_date={this.props.state.fetch.data.update_date_time}></Cards>
+                            < Cards type={'Gloabl New Deaths'}
+                                src={icons[0]}
+                                value={this.props.state.fetch.data.global_new_deaths}
+                                color={colours[3]}
+                                updated_date={this.props.state.fetch.data.update_date_time}></Cards>
+                            < Cards type={'Gloabl Recovered'}
+                                src={icons[5]}
+                                value={this.props.state.fetch.data.global_recovered}
+                                color={colours[4]}
+                                updated_date={this.props.state.fetch.data.update_date_time}></Cards>
+                        </React.Fragment> : null
+                }
+            </CardDeck >
         )
     }
 }
+export default connect(state => ({ state: getDatas(state) }),
+    toggle => ({ toggle: getToggleStates(toggle) })
+)(DailyData);

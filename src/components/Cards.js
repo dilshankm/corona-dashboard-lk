@@ -1,13 +1,8 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
 
 export default class Cards extends Component {
-
-    static propTypes = {
-        prop: PropTypes
-    }
 
     numberCountStyle = () => {
         return {
@@ -59,9 +54,6 @@ export default class Cards extends Component {
                 <Card.Body>
                     <Card.Text style={this.numberCountStyle()}>{this.props.value}</Card.Text>
                 </Card.Body>
-                <Card.Footer>
-                    <small className="text-white" style={this.datetimeStyle()}>{this.props.updated_date}</small>
-                </Card.Footer>
             </Card>
         )
     }
