@@ -17,7 +17,7 @@ export default class Cards extends Component {
         return {
             justifyContent: 'center',
             alignItems: 'center',
-            fontSize: '3.5vmin',
+            fontSize: '3.9vmin',
             fontWeight: 'bold',
         }
     }
