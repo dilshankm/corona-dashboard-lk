@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
 import Navbar from 'react-bootstrap/Navbar'
+import { slide as Menu } from 'react-burger-menu'
 
 export default class Header extends Component {
 
     headerStyle = () => {
         return {
-            fontSize: '3.5vmin'
+            fontSize: '3.5vmin',
+            backgroundColor: '#FAED26',
         }
     }
 
     navBarStyle = () => {
         return {
-            backgroundColor: 'navy',
+            backgroundColor: '#FAED26',
             fontWeight: 'bold',
             width: 'auto',
             sticky: 'top'
@@ -22,6 +24,10 @@ export default class Header extends Component {
         return {
             width: 'auto'
         }
+    }
+
+    showSettings = (event) => {
+        event.preventDefault()
     }
 
 
