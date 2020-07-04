@@ -9,16 +9,9 @@ class App extends React.Component {
   }
 
 
-
-  appStyle = () => {
-    return {
-      backgroundColor: '#5A5560'
-    }
-  }
-
   render() {
     return (
-      <div className="App" style={this.appStyle()} >
+      <div className="App">
         <Full />
       </div >
     );

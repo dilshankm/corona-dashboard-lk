@@ -43,7 +43,7 @@ export default class About extends Component {
             <React.Fragment>
                 <CssBaseline />
                 <Container>
-                    <Typography component="div" style={{ backgroundColor: '#5A5560', height: '100vh' }} >
+                    <Typography component="div" style={{ height: '100vh' }} >
                         <h1 style={this.fontStyle()}>Coming Soon</h1>
                     </Typography>
                 </Container>
