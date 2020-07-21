@@ -22,7 +22,7 @@ export default function LocalCases() {
 
     theme.typography.h2 = {
         fontWeight: 'bold',
-        color: 'white',
+        color: 'purple',
         '@media (min-width:600px)': {
             fontSize: '3vw',
         },
